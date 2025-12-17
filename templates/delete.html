@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<h1 class="page-title" style="text-align:center;">Delete Product</h1>
+
+<div class="delete-box">
+  <h3>Are you sure you want to delete <strong>Nike Air Max</strong>?</h3>
+  <p>This action cannot be undone.</p>
+
+  <br>
+
+  <form action="{% url 'delete-shop' post.id %}" method="post">{% csrf_token %}
+    <!-- <a class="btn-danger" href="{% url 'delete-shop' post.id %}">Yes, delete</a> -->
+    <button type="submit" class="btn btn-delete">Yes, delete</button>
+    <a class="btn-outline" href="{% url 'detail-shop' post.id %}">Cancel</a>
+  </form>
+</div>
+
+</body>
+</html>

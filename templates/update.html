@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<!-- Page Title -->
+<h1 class="page-title" style="text-align:center;">Update Product</h1>
+
+<form action="{% url 'update-shop' post.id %}" enctype="multipart/form-data" method="post" > {% csrf_token %}
+
+  <label>Name</label>
+  <input type="text" value="{{post.title}}" name="title">
+
+  <label>Price</label>
+  <input type="number" value="{{post.price}}" name="price">
+
+  <label>Image File</label>
+  <img src="{{post.images.url}}" alt="bu yerda post rasmi bor" width="533px" style="border-radius: 30px;">
+  <input type="file" accept="image*/" name="images">
+
+  <label>Description</label>
+  <textarea rows="5" name="description">{{post.description}}</textarea>
+
+  <!-- Checkbox in row -->
+  <div class="check-row">
+    <input type="checkbox" id="isActive" checked name="is_active">
+    <label class="check-label" for="isActive">Is Active</label>
+  </div>
+
+  <div class="button-row">
+      <button type="button" class="btn cancel-btn" onclick="window.location.href='index.html'">Cancel</button>
+      <button type="submit" class="btn save-btn">Save</button>
+    </div>
+  </form>
+
+</body>
+</html>

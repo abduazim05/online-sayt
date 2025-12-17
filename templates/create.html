@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+
+<h1 class="page-title" style="text-align:center;">Create Product</h1>
+
+<form enctype="multipart/form-data" action="{% url 'create-shop' %}" method="post"> {% csrf_token %}
+  
+  <label>Name</label>
+  <input type="text" placeholder="Product name" name="title">
+
+  <label>Price</label>
+  <input type="number" placeholder="Price" name="price">
+
+  <label>Product Image</label>
+  <input type="file" accept="image/*" name="images">
+
+  <label>Description</label>
+  <textarea rows="5" placeholder="Product description" name="description"></textarea>
+
+  <div class="check-row">
+    <input type="checkbox" id="active" name="is_active">
+    <label for="active" class="check-label">Is Active</label>
+  </div>
+
+  <div class="button-row">
+    <a class="btn cancel-btn" href="{% url 'home' %}">Cancel</a>
+    <button type="submit" class="btn save-btn">Save</button>
+  </div>
+</form>
+
+</body>
+</html>
